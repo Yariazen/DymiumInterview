@@ -1,6 +1,4 @@
-﻿char[] buffer = "This is a char array!".ToCharArray();
-
-static char[] ReverseInPlace(int start, int end, char[] buffer)
+﻿static char[] ReverseInPlace(int start, int end, char[] buffer)
 {
     int length = end - start;
     for (int i = 0; i < length / 2; i++)
@@ -12,7 +10,7 @@ static char[] ReverseInPlace(int start, int end, char[] buffer)
     return buffer;
 }
 
-static void ReverseWords(char[] buffer)
+static char[] ReverseWords(char[] buffer)
 {
     buffer = ReverseInPlace(0, buffer.Length, buffer);
     int start = 0;
@@ -25,8 +23,37 @@ static void ReverseWords(char[] buffer)
             start = i + 1;
         }
     }
-    buffer = ReverseInPlace(start, buffer.Length, buffer);
+    return ReverseInPlace(start, buffer.Length, buffer);
 }
 
-ReverseWords(buffer);
-Console.WriteLine(buffer);
+static void Test(string identifier, char[] input, char[] expectedOutput)
+{
+    try
+    {
+        char[] output = ReverseWords(input);
+        Console.WriteLine(identifier);
+
+        if (input == expectedOutput)
+        {
+            Console.WriteLine("Test Passed!!!");
+        }
+        else
+        {
+            Console.WriteLine("Test Failed!!!");
+            Console.WriteLine("Input:    " + input);
+            Console.WriteLine("Output:   " + ReverseWords(input));
+            Console.WriteLine("Expected: " + expectedOutput);
+        }
+    } catch (Exception e) {
+        Console.WriteLine("Test failed with exception " + e.Message);
+    }
+}
+
+char[] buffer1 = "".ToCharArray();
+Test("Test empty", buffer1, "".ToCharArray());
+
+char[] buffer2 = "This is a char array!".ToCharArray();
+Test("Test simple sentence", buffer2, "array! char a is This".ToCharArray());
+
+
+
