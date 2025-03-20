@@ -1,10 +1,11 @@
-﻿/// <summary>
-/// Reverses a portion of a character array in place.
-/// </summary>
-/// <param name="start">The starting index for the portion of the array to reverse.</param>
-/// <param name="end">The ending index for the portion of the array to reverse.</param>
-/// <param name="buffer">The character array to reverse.</param>
-/// <returns>A character array with the specified portion reversed.</returns>
+﻿/**
+ * Reverses a portion of the given character array, from the specified start index to the end index.
+ *
+ * @param start The starting index of the portion to reverse.
+ * @param end The ending index of the portion to reverse.
+ * @param buffer The character array to reverse.
+ * @return A character array with the specified portion reversed.
+ */
 static char[] ReverseInPlace(int start, int end, char[] buffer)
 {
     int length = end - start;
@@ -17,12 +18,14 @@ static char[] ReverseInPlace(int start, int end, char[] buffer)
     return buffer;
 }
 
-/// <summary>
-/// Reverses the words in a character array.
-/// Words are considered to be sequences of non-space characters separated by spaces.
-/// </summary>
-/// <param name="buffer">The character array containing words to reverse.</param>
-/// <returns>A character array with the words reversed in place.</returns>
+/**
+ * Reverses the words in the given character array.
+ * Words are sequences of non-space characters separated by spaces.
+ * The function reverses the entire character array first, then reverses each individual word in place.
+ *
+ * @param buffer The character array containing words to reverse.
+ * @return A character array with the words reversed in place.
+ */
 static char[] ReverseWords(char[] buffer)
 {
     buffer = ReverseInPlace(0, buffer.Length, buffer);
@@ -39,12 +42,14 @@ static char[] ReverseWords(char[] buffer)
     return ReverseInPlace(start, buffer.Length, buffer);
 }
 
-/// <summary>
-/// Compares two character arrays for equality.
-/// </summary>
-/// <param name="a">The first character array.</param>
-/// <param name="b">The second character array.</param>
-/// <returns>True if the arrays have the same length and the same content, otherwise false.</returns>
+/**
+ * Compares two character arrays for equality.
+ * The arrays are considered equal if they have the same length and identical content.
+ *
+ * @param a The first character array.
+ * @param b The second character array.
+ * @return True if the arrays are equal, otherwise false.
+ */
 static bool Compare(char[] a, char[] b)
 {
     if (a.Length != b.Length)
@@ -59,12 +64,14 @@ static bool Compare(char[] a, char[] b)
     return true;
 }
 
-/// <summary>
-/// Tests the ReverseWords function by comparing the output with the expected output.
-/// </summary>
-/// <param name="identifier">The identifier for the test (used for display purposes).</param>
-/// <param name="input">The input character array to test with.</param>
-/// <param name="expectedOutput">The expected output character array.</param>
+/**
+ * Tests the ReverseWords function by comparing the output with the expected output.
+ * Displays the test result, along with the input, actual output, and expected output if the test fails.
+ *
+ * @param identifier The identifier for the test (used for display purposes).
+ * @param input The input character array to test with.
+ * @param expectedOutput The expected output character array.
+ */
 static void Test(string identifier, char[] buffer, char[] expectedResult)
 {
     try
